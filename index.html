@@ -55,10 +55,11 @@
     /* Hero Section */
     .hero {
       height: 100vh;
-      background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1615143525390-6374c04468b4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      /* background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; */
       display: flex; justify-content: center; align-items: center;
       text-align: center;
-      color: #fff;
+      color: #ffb6c1;
       padding: 0 20px;
     }
 
@@ -152,19 +153,40 @@
       background: #ff89a6;
     }
 
-    /* Services */
+    /* Dynamic Services */
+    .services-categories {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .services-categories button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      background: #ffb6c1;
+      color: #222;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .services-categories button:hover,
+    .services-categories button.active {
+      background: #ff89a6;
+      color: #fff;
+    }
+
     .services {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
-      justify-content: center;
     }
 
     .service-box {
       background: #fff;
       padding: 25px;
       border-radius: 15px;
-      flex: 1 1 280px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       text-align: center;
       transition: transform 0.3s;
@@ -285,8 +307,24 @@
   <section id="products">
     <h2>Our Featured Product</h2>
     <div class="products">
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1601046380602-90a6fa3b25d6?auto=format&fit=crop&w=800&q=80" alt="Tantrum All Powder">
+      <div class="product-card" style="text-align:center;">
+        <!-- Main Image -->
+        <img id="mainProductImage" 
+             src="TanPowder1.jpg" 
+             alt="Tantrum All Powder"
+             style="border-radius:12px; width:250px; height:auto; margin-bottom:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+
+        <!-- Thumbnails -->
+        <div style="margin-bottom:15px;">
+          <img src="TanPowder1.jpg" alt="Tantrum Powder Front" 
+               style="width:60px; height:auto; margin:5px; cursor:pointer; border-radius:8px; border:2px solid #ddd;"
+               onclick="document.getElementById('mainProductImage').src=this.src;">
+          <img src="powder-1.jpg" alt="Tantrum Powder Side" 
+               style="width:60px; height:auto; margin:5px; cursor:pointer; border-radius:8px; border:2px solid #ddd;"
+               onclick="document.getElementById('mainProductImage').src=this.src;">
+        </div>
+
+        <!-- Product Info -->
         <h3>Tantrum All Powder</h3>
         <p>A premium quality beauty powder designed to give your skin a flawless touch all day long.</p>
         <button>Buy Now</button>
@@ -294,24 +332,66 @@
     </div>
   </section>
 
-  <!-- Services -->
+    <!-- Dynamic Services -->
   <section id="services">
     <h2>Our Services</h2>
-    <div class="services">
-      <div class="service-box">
-        <h3>Beauty Consultation</h3>
-        <p>Personalized beauty advice tailored to your needs and lifestyle.</p>
+
+    <!-- Categories -->
+    <div class="services-categories">
+      <button class="active" onclick="showCategory('prewedding')">Pre-Wedding</button>
+      <button onclick="showCategory('skin')">Skin</button>
+      <button onclick="showCategory('hair')">Hair</button>
+    </div>
+
+    <!-- Services List -->
+    <div class="services" id="services-list">
+      <!-- Pre-Wedding Services -->
+      <div class="service-box category-prewedding">
+        <h3>Bridal Makeup</h3>
+        <p>Elegant, long-lasting bridal looks tailored to match your outfit, personality, and the theme of your big day.</p>
+        <p><strong>Includes:</strong> HD/airbrush makeup, false lashes, hairstyling, and touch-up kit.</p>
       </div>
-      <div class="service-box">
-        <h3>Desk Care Setup</h3>
-        <p>Organize your workspace with professional desk setup and care solutions.</p>
+      <div class="service-box category-prewedding">
+        <h3>Engagement Styling</h3>
+        <p>Look stunning with modern yet elegant makeup and hair styling for your engagement ceremony.</p>
+        <p><strong>Package:</strong> Outfit draping, hairstyle of choice, and premium skin prep.</p>
       </div>
-      <div class="service-box">
-        <h3>Skin Care Guidance</h3>
-        <p>Expert tips and routines to keep your skin glowing and healthy.</p>
+      <div class="service-box category-prewedding">
+        <h3>Mehendi & Sangeet Glam</h3>
+        <p>Fresh, colorful looks for your pre-wedding celebrations with vibrant and playful styling.</p>
+      </div>
+
+      <!-- Skin Services -->
+      <div class="service-box category-skin" style="display:none;">
+        <h3>Facials</h3>
+        <p>Relaxing treatments to rejuvenate your skin and restore natural glow.</p>
+        <p><strong>Options:</strong> Gold, diamond, and fruit facials based on your skin type.</p>
+      </div>
+      <div class="service-box category-skin" style="display:none;">
+        <h3>Skin Therapy</h3>
+        <p>Advanced therapies for acne, pigmentation, and dullness with dermatologist-approved products.</p>
+      </div>
+      <div class="service-box category-skin" style="display:none;">
+        <h3>Bridal Skin Packages</h3>
+        <p>Multi-session treatments before your wedding to ensure clear, radiant skin.</p>
+      </div>
+
+      <!-- Hair Services -->
+      <div class="service-box category-hair" style="display:none;">
+        <h3>Hair Styling</h3>
+        <p>Trendy hairstyles for parties, weddings, or casual outings — from sleek buns to beachy waves.</p>
+      </div>
+      <div class="service-box category-hair" style="display:none;">
+        <h3>Hair Spa</h3>
+        <p>Deep nourishment and scalp treatments for shiny, frizz-free, and healthy hair.</p>
+      </div>
+      <div class="service-box category-hair" style="display:none;">
+        <h3>Color & Highlights</h3>
+        <p>Professional coloring services with high-quality, ammonia-free products for long-lasting results.</p>
       </div>
     </div>
   </section>
+
 
   <!-- About -->
   <section id="about">
@@ -338,6 +418,20 @@
   <footer>
     <p>© 2025 Sun Beauty Care. All Rights Reserved.</p>
   </footer>
+
+  <!-- Script for Dynamic Switching -->
+  <script>
+    function showCategory(category) {
+      // hide all services
+      document.querySelectorAll('.service-box').forEach(box => box.style.display = 'none');
+      // remove active from buttons
+      document.querySelectorAll('.services-categories button').forEach(btn => btn.classList.remove('active'));
+      // show selected category
+      document.querySelectorAll('.category-' + category).forEach(box => box.style.display = 'block');
+      // highlight active button
+      event.target.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
