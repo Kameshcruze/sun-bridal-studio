@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout - Sun Beauty Care</title>
+  <style>
+    /* Global */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+    body {
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Navbar (reuse style from index) */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: #222; color: #fff;
+      padding: 15px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 1000;
+    }
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffb6c1;
+    }
+
+    /* Page layout */
+    .container {
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* Checkout Card */
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      animation: fadeIn 0.6s ease;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      color: #222;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin: 15px 0 6px;
+      font-size: 0.95rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    input:focus, textarea:focus {
+      border-color: #ffb6c1;
+      box-shadow: 0 0 0 4px rgba(255,182,193,0.2);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: #ffb6c1;
+      color: #222;
+      transition: background 0.3s;
+    }
+    button:hover { background: #ff89a6; }
+    button[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+    .msg {
+      margin-top: 15px;
+      font-size: 14px;
+      display: none;
+      text-align: center;
+    }
+    .msg.show { display: block; }
+    .ok { color: #1a7f37; }
+    .err { color: #c62828; }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Sun Beauty Care</div>
+  </nav>
+
+  <!-- Checkout Form -->
+  <div class="container">
+    <div class="card">
+      <h1>Checkout</h1>
+
+      <form id="checkoutForm">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" placeholder="Your full name" required />
+
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3" placeholder="Full address" required></textarea>
+
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="^[0-9]{10}$" placeholder="10-digit phone number" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+        <button id="payBtn" type="submit">Place Order</button>
+      </form>
+
+      <div id="msg" class="msg"></div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbygYVp8KF1YDWmLkV9whyH-FKZWtcDjeEhnai2t3NvPog7aVbhx2HDgIPUAQB69MzhLbg/exec'; // your Apps Script URL
+
+    const form = document.getElementById('checkoutForm');
+    const btn = document.getElementById('payBtn');
+    const msg = document.getElementById('msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (!name || !address || !phone || !email) return;
+
+      btn.disabled = true; btn.textContent = 'Saving…';
+      msg.className = 'msg'; msg.textContent = '';
+
+      try {
+        const body = new URLSearchParams({ name, address, phone, email });
+
+        const res = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body
+        });
+
+        const data = await res.json().catch(() => ({ ok: false, error: 'Invalid JSON response' }));
+
+        if (data.ok) {
+          msg.textContent = 'Order received! We will contact you soon.';
+          msg.classList.add('show', 'ok');
+          form.reset();
+        } else {
+          throw new Error(data.error || 'Unknown error');
+        }
+      } catch (err) {
+        msg.textContent = 'Failed: ' + (err && err.message ? err.message : err);
+        msg.classList.add('show', 'err');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Place Order';
+      }
+    });
+  </script>
+</body>
+</html>
