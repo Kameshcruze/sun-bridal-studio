@@ -4,134 +4,161 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sun Beauty Care | Bridal Makeup & Beauty Parlour in Karur</title>
+<title>Sun Beauty Care | Premium Bridal Makeup in Karur</title>
 
-<!-- SEO -->
-<meta name="description" content="Sun Beauty Care is a professional beauty parlour in Karur offering bridal makeup, hair styling, facials, grooming and skin care services.">
-<meta name="keywords" content="Sun Beauty Care Karur, Beauty Parlour in Karur, Bridal Makeup Karur, Hair Styling Karur, Facial Karur">
-<meta name="author" content="Sun Beauty Care">
-<meta name="geo.region" content="IN-TN">
-<meta name="geo.placename" content="Karur">
+<meta name="description" content="Sun Beauty Care is a premium beauty parlour in Karur specializing in bridal makeup, hair styling, facials and professional grooming.">
+<meta name="keywords" content="Sun Beauty Care Karur, Bridal Makeup Karur, Beauty Parlour Karur">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --primary:#8b0000;
+  --primary:#7a0c0c;
   --secondary:#b11226;
-  --bg:#fff6f6;
-  --text:#2b2b2b;
+  --light:#fff5f5;
+  --dark:#1e1e1e;
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
-  background:var(--bg);
-  color:var(--text);
+  font-family:'Poppins',sans-serif;
+  background:#fafafa;
+  color:var(--dark);
 }
 
-/* animations */
-.fade-up{opacity:0;transform:translateY(30px);transition:1s}
-.fade-up.show{opacity:1;transform:none}
+/* ---------- GLOBAL ---------- */
+section{padding:90px 20px}
+.container{max-width:1200px;margin:auto}
+h2{text-align:center;color:var(--primary);font-size:36px;margin-bottom:20px}
+.sub{text-align:center;color:#555;margin-bottom:50px}
 
-/* hero */
+/* ---------- HERO ---------- */
 .hero{
-  background:linear-gradient(rgba(139,0,0,.85),rgba(139,0,0,.85)),
+  height:100vh;
+  background:
+  linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
   url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9");
   background-size:cover;
   background-position:center;
-  color:#fff;
-  padding:110px 20px;
+  display:flex;
+  align-items:center;
   text-align:center;
+  color:#fff;
 }
-.hero h1{font-size:46px;margin-bottom:10px}
-.hero p{font-size:18px;max-width:600px;margin:auto}
-.hero a{
+.hero h1{font-size:56px;font-weight:700}
+.hero p{font-size:20px;max-width:650px;margin:20px auto}
+.hero .btns a{
   display:inline-block;
-  margin:14px;
-  padding:14px 32px;
-  border-radius:30px;
+  margin:15px;
+  padding:16px 36px;
+  border-radius:40px;
   background:#fff;
   color:var(--primary);
-  text-decoration:none;
   font-weight:600;
+  text-decoration:none;
+  transition:.3s;
 }
+.hero .btns a:hover{transform:translateY(-4px)}
 
-/* section */
-section{
-  padding:70px 20px;
-  max-width:1200px;
-  margin:auto;
-}
-h2{text-align:center;color:var(--primary);margin-bottom:40px}
-
-/* services */
+/* ---------- SERVICES ---------- */
 .services{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
+  gap:30px;
 }
-.card{
+.service{
   background:#fff;
-  padding:24px;
-  border-radius:18px;
-  box-shadow:0 15px 35px rgba(0,0,0,.1);
-  transition:.3s;
+  padding:30px;
+  border-radius:22px;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+  transition:.4s;
 }
-.card:hover{transform:translateY(-6px)}
-.card h3{color:var(--secondary);margin-top:0}
+.service:hover{
+  transform:translateY(-10px);
+  box-shadow:0 30px 70px rgba(0,0,0,.12);
+}
+.service h3{color:var(--secondary)}
 
-/* gallery */
+/* ---------- GALLERY ---------- */
 .gallery-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
+  gap:30px;
 }
-.gallery-box{
+.gallery-card{
   background:#fff;
+  border-radius:22px;
   padding:16px;
-  border-radius:18px;
-  box-shadow:0 15px 35px rgba(0,0,0,.1);
+  box-shadow:0 20px 50px rgba(0,0,0,.1);
 }
 .slider{
   display:flex;
-  gap:12px;
   overflow-x:auto;
+  gap:14px;
   scroll-snap-type:x mandatory;
 }
 .slider img{
-  height:240px;
-  border-radius:14px;
+  height:260px;
+  border-radius:18px;
   scroll-snap-align:center;
+  transition:.3s;
 }
+.slider img:hover{transform:scale(1.05)}
 
-/* map */
+/* ---------- MAP ---------- */
 .map iframe{
   width:100%;
-  height:220px;
+  height:240px;
+  border-radius:22px;
   border:0;
-  border-radius:16px;
 }
-.map-actions{
-  text-align:center;
-  margin-top:14px;
-}
-.map-actions a{
+.map a{
   display:inline-block;
-  padding:12px 26px;
+  margin-top:20px;
+  padding:14px 34px;
   background:var(--primary);
   color:#fff;
-  text-decoration:none;
   border-radius:30px;
+  text-decoration:none;
   font-weight:600;
 }
 
-/* footer */
-footer{
+/* ---------- POPUPS ---------- */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+.popup-box{
+  background:#fff;
+  padding:40px;
+  border-radius:24px;
+  max-width:420px;
+  text-align:center;
+}
+.popup-box h3{color:var(--primary)}
+.popup-box button{
+  margin-top:20px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
   background:var(--primary);
   color:#fff;
+  cursor:pointer;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:#111;
+  color:#fff;
+  padding:40px 20px;
   text-align:center;
-  padding:30px 20px;
 }
 </style>
 </head>
@@ -139,63 +166,45 @@ footer{
 <body>
 
 <!-- HERO -->
-<div class="hero fade-up">
-<h1>Sun Beauty Care</h1>
-<p>Professional Bridal Makeup, Hair Styling & Beauty Services in Karur</p>
-<a href="tel:9898976135">Call Now</a>
-<a href="https://wa.me/919898976135?text=Hello%20Sun%20Beauty%20Care,%20I%20would%20like%20to%20enquire%20about%20your%20services.">
-WhatsApp</a>
+<div class="hero">
+  <div class="container">
+    <h1>Sun Beauty Care</h1>
+    <p>Premium Bridal Makeup & Professional Beauty Services in Karur</p>
+    <div class="btns">
+      <a href="tel:9898976135">Call Now</a>
+      <a href="https://wa.me/919898976135">WhatsApp</a>
+    </div>
+  </div>
 </div>
 
 <!-- SERVICES -->
-<section class="fade-up">
-<h2>Our Services</h2>
+<section>
+<div class="container">
+<h2>Our Expertise</h2>
+<p class="sub">Crafted with experience, delivered with care</p>
 <div class="services">
-<div class="card">
-<h3>Hair Services</h3>
-<ul>
-<li>Hair Coloring & Root Touch-Up</li>
-<li>Hair Spa (Normal & Volume)</li>
-<li>Adult & Baby Hair Cuts</li>
-</ul>
-</div>
-<div class="card">
-<h3>Skin & Facials</h3>
-<ul>
-<li>Wine, Fruit, Charcoal Facial</li>
-<li>Pearl, Gold, Diamond Facial</li>
-<li>Shahnaz Facial & Cleanup</li>
-</ul>
-</div>
-<div class="card">
-<h3>Grooming</h3>
-<ul>
-<li>Threading & Waxing</li>
-<li>Manicure & Pedicure</li>
-<li>Cracked Heel Care</li>
-</ul>
-</div>
-<div class="card">
-<h3>Massage</h3>
-<ul>
-<li>Head Massage</li>
-<li>Full Body Oil Massage</li>
-</ul>
+  <div class="service"><h3>Bridal Makeup</h3><p>Traditional & modern bridal looks with premium products.</p></div>
+  <div class="service"><h3>Hair Styling</h3><p>Elegant hair designs for weddings & occasions.</p></div>
+  <div class="service"><h3>Skin & Facials</h3><p>Advanced skincare treatments for radiant glow.</p></div>
+  <div class="service"><h3>Grooming</h3><p>Threading, waxing, manicure & pedicure services.</p></div>
 </div>
 </div>
 </section>
 
 <!-- GALLERY -->
-<section class="fade-up">
+<section style="background:var(--light)">
+<div class="container">
 <h2>Bridal Gallery</h2>
+<p class="sub">Every bride. Every detail. Perfectly done.</p>
 <div class="gallery-grid" id="gallery"></div>
+</div>
 </section>
 
 <!-- MAP -->
-<section class="fade-up map">
+<section>
+<div class="container map">
 <h2>Visit Us</h2>
-<iframe src="https://www.google.com/maps?q=Sun%20Beauty%20Care%20Karur&output=embed"></iframe>
-<div class="map-actions">
+<iframe src="https://www.google.com/maps?q=Sun+Beauty+Care+Karur&output=embed"></iframe>
 <a href="https://www.google.com/maps/dir/?api=1&destination=Sun+Beauty+Care+Karur" target="_blank">
 Get Directions
 </a>
@@ -203,37 +212,41 @@ Get Directions
 </section>
 
 <footer>
-<p>Sun Beauty Care • Karur, Tamil Nadu • 📞 98989 76135</p>
+<p>Sun Beauty Care • Karur • 98989 76135</p>
 </footer>
 
+<!-- OFFER POPUP -->
+<div class="popup" id="offer">
+  <div class="popup-box">
+    <h3>Special Bridal Offer</h3>
+    <p>Book your bridal makeup today & get a complimentary hair spa.</p>
+    <button onclick="closeOffer()">Got it</button>
+  </div>
+</div>
+
 <script>
-/* animation */
-document.querySelectorAll('.fade-up').forEach(el=>{
-  new IntersectionObserver(([e])=>{
-    if(e.isIntersecting) el.classList.add('show')
-  }).observe(el)
-})
-
-/* gallery sets */
-const gallery=document.getElementById("gallery")
-
-const imageSet=[
-  "https://a2060316.sun-beauty-care.pages.dev/image1.jpeg",
-  "https://a2060316.sun-beauty-care.pages.dev/image2.jpeg",
-  "https://a2060316.sun-beauty-care.pages.dev/image3.jpeg",
-  "https://a2060316.sun-beauty-care.pages.dev/image4.jpeg"
+/* gallery */
+const images=[
+"https://a2060316.sun-beauty-care.pages.dev/image1.jpeg",
+"https://a2060316.sun-beauty-care.pages.dev/image2.jpeg",
+"https://a2060316.sun-beauty-care.pages.dev/image3.jpeg",
+"https://a2060316.sun-beauty-care.pages.dev/image4.jpeg"
 ]
-
-/* 4 sets for now */
-const sets=[imageSet,imageSet,imageSet,imageSet]
-
-gallery.innerHTML = sets.map(set=>`
-  <div class="gallery-box">
+const gallery=document.getElementById("gallery")
+gallery.innerHTML = Array(4).fill(images).map(set=>`
+  <div class="gallery-card">
     <div class="slider">
-      ${set.map(img=>`<img src="${img}" loading="lazy">`).join("")}
+      ${set.map(i=>`<img src="${i}" loading="lazy">`).join("")}
     </div>
   </div>
 `).join("")
+
+/* popup */
+function closeOffer(){
+  document.getElementById("offer").style.display="none"
+  localStorage.setItem("offerSeen","yes")
+}
+if(localStorage.getItem("offerSeen")) closeOffer()
 </script>
 
 </body>
