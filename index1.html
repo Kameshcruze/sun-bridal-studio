@@ -1,514 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sun Beauty Care</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    /* Global Reset */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
+<title>Sun Beauty Care | Bridal Makeup & Beauty Parlour in Karur</title>
 
-    body {
-      line-height: 1.6;
-      color: #333;
-      background: #f9f9f9;
-    }
+<!-- SEO -->
+<meta name="description" content="Sun Beauty Care is a professional beauty parlour in Karur offering bridal makeup, hair styling, facials, grooming and skin care services.">
+<meta name="keywords" content="Sun Beauty Care Karur, Beauty Parlour in Karur, Bridal Makeup Karur, Hair Styling Karur, Facial Karur">
+<meta name="author" content="Sun Beauty Care">
+<meta name="geo.region" content="IN-TN">
+<meta name="geo.placename" content="Karur">
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      background: #222;
-      color: #fff;
-      padding: 15px 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      z-index: 1000;
-    }
+<style>
+:root{
+  --primary:#8b0000;
+  --secondary:#b11226;
+  --bg:#fff6f6;
+  --text:#2b2b2b;
+}
 
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-      color: #ffffff;
-    }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+  background:var(--bg);
+  color:var(--text);
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
+/* animations */
+.fade-up{opacity:0;transform:translateY(30px);transition:1s}
+.fade-up.show{opacity:1;transform:none}
 
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
+/* hero */
+.hero{
+  background:linear-gradient(rgba(139,0,0,.85),rgba(139,0,0,.85)),
+  url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9");
+  background-size:cover;
+  background-position:center;
+  color:#fff;
+  padding:110px 20px;
+  text-align:center;
+}
+.hero h1{font-size:46px;margin-bottom:10px}
+.hero p{font-size:18px;max-width:600px;margin:auto}
+.hero a{
+  display:inline-block;
+  margin:14px;
+  padding:14px 32px;
+  border-radius:30px;
+  background:#fff;
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+}
 
-    nav ul li a:hover {
-      color: #ffb6c1;
-    }
+/* section */
+section{
+  padding:70px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+h2{text-align:center;color:var(--primary);margin-bottom:40px}
 
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      background: url('https://www.visittnt.com/images/indian-marriage.jpg') center/cover no-repeat;
+/* services */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+.card{
+  background:#fff;
+  padding:24px;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,.1);
+  transition:.3s;
+}
+.card:hover{transform:translateY(-6px)}
+.card h3{color:var(--secondary);margin-top:0}
 
-      /* background: url('https://images.unsplash.com/photo-1615143525390-6374c04468b4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; */
-      /* background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; */
-      display: flex; justify-content: center; align-items: center;
-      text-align: center;
-      color: #ffffff;
-      padding: 0 20px;
-    }
+/* gallery */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+.gallery-box{
+  background:#fff;
+  padding:16px;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,.1);
+}
+.slider{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+}
+.slider img{
+  height:240px;
+  border-radius:14px;
+  scroll-snap-align:center;
+}
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-    }
+/* map */
+.map iframe{
+  width:100%;
+  height:220px;
+  border:0;
+  border-radius:16px;
+}
+.map-actions{
+  text-align:center;
+  margin-top:14px;
+}
+.map-actions a{
+  display:inline-block;
+  padding:12px 26px;
+  background:var(--primary);
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:600;
+}
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    .hero a {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #ffb6c1;
-      color: #222;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .hero a:hover {
-      background: #ff89a6;
-    }
-
-    /* Section Generic */
-    section {
-      padding: 80px 60px;
-    }
-
-    section h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 40px;
-      color: #222;
-    }
-
-    /* Products */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      justify-content: center;
-    }
-
-    .product-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .product-card img {
-      max-width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
-
-    .product-card h3 {
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-
-    .product-card p {
-      font-size: 0.95rem;
-      margin-bottom: 15px;
-    }
-
-    .product-card button {
-      padding: 10px 20px;
-      border: none;
-      background: #ffb6c1;
-      color: #222;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .product-card button:hover {
-      background: #ff89a6;
-    }
-
-    /* Dynamic Services */
-    .services-categories {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .services-categories button {
-      margin: 5px;
-      padding: 10px 20px;
-      border: none;
-      background: #ffb6c1;
-      color: #222;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .services-categories button:hover,
-    .services-categories button.active {
-      background: #ff89a6;
-      color: #fff;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .service-box {
-      background: #fff;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .service-box:hover {
-      transform: translateY(-6px);
-    }
-
-    .service-box h3 {
-      margin-bottom: 12px;
-    }
-
-    /* About */
-    .about {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .about p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-top: 20px;
-    }
-
-    /* Contact */
-    .contact {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .contact h2 {
-      color: #fff;
-    }
-
-    .contact form {
-      max-width: 500px;
-      margin: 30px auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .contact input, .contact textarea {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-    }
-
-    .contact button {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #ffb6c1;
-      color: #222;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .contact button:hover {
-      background: #ff89a6;
-    }
-
-    /* Footer */
-    footer {
-      background: #111;
-      color: #bbb;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .hero h1 { font-size: 2.2rem; }
-      .hero p { font-size: 1rem; }
-    }
-  </style>
+/* footer */
+footer{
+  background:var(--primary);
+  color:#fff;
+  text-align:center;
+  padding:30px 20px;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">Sun Beauty Care</div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About Us</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- HERO -->
+<div class="hero fade-up">
+<h1>Sun Beauty Care</h1>
+<p>Professional Bridal Makeup, Hair Styling & Beauty Services in Karur</p>
+<a href="tel:9898976135">Call Now</a>
+<a href="https://wa.me/919898976135?text=Hello%20Sun%20Beauty%20Care,%20I%20would%20like%20to%20enquire%20about%20your%20services.">
+WhatsApp</a>
+</div>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div>
-      <h1>Enhance Your Beauty & Workspace</h1>
-      <p>Premium products and services to elevate your confidence & environment.</p>
-      <a href="#products">Shop Now</a>
+<!-- SERVICES -->
+<section class="fade-up">
+<h2>Our Services</h2>
+<div class="services">
+<div class="card">
+<h3>Hair Services</h3>
+<ul>
+<li>Hair Coloring & Root Touch-Up</li>
+<li>Hair Spa (Normal & Volume)</li>
+<li>Adult & Baby Hair Cuts</li>
+</ul>
+</div>
+<div class="card">
+<h3>Skin & Facials</h3>
+<ul>
+<li>Wine, Fruit, Charcoal Facial</li>
+<li>Pearl, Gold, Diamond Facial</li>
+<li>Shahnaz Facial & Cleanup</li>
+</ul>
+</div>
+<div class="card">
+<h3>Grooming</h3>
+<ul>
+<li>Threading & Waxing</li>
+<li>Manicure & Pedicure</li>
+<li>Cracked Heel Care</li>
+</ul>
+</div>
+<div class="card">
+<h3>Massage</h3>
+<ul>
+<li>Head Massage</li>
+<li>Full Body Oil Massage</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="fade-up">
+<h2>Bridal Gallery</h2>
+<div class="gallery-grid" id="gallery"></div>
+</section>
+
+<!-- MAP -->
+<section class="fade-up map">
+<h2>Visit Us</h2>
+<iframe src="https://www.google.com/maps?q=Sun%20Beauty%20Care%20Karur&output=embed"></iframe>
+<div class="map-actions">
+<a href="https://www.google.com/maps/dir/?api=1&destination=Sun+Beauty+Care+Karur" target="_blank">
+Get Directions
+</a>
+</div>
+</section>
+
+<footer>
+<p>Sun Beauty Care • Karur, Tamil Nadu • 📞 98989 76135</p>
+</footer>
+
+<script>
+/* animation */
+document.querySelectorAll('.fade-up').forEach(el=>{
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting) el.classList.add('show')
+  }).observe(el)
+})
+
+/* gallery sets */
+const gallery=document.getElementById("gallery")
+
+const imageSet=[
+  "https://a2060316.sun-beauty-care.pages.dev/image1.jpeg",
+  "https://a2060316.sun-beauty-care.pages.dev/image2.jpeg",
+  "https://a2060316.sun-beauty-care.pages.dev/image3.jpeg",
+  "https://a2060316.sun-beauty-care.pages.dev/image4.jpeg"
+]
+
+/* 4 sets for now */
+const sets=[imageSet,imageSet,imageSet,imageSet]
+
+gallery.innerHTML = sets.map(set=>`
+  <div class="gallery-box">
+    <div class="slider">
+      ${set.map(img=>`<img src="${img}" loading="lazy">`).join("")}
     </div>
-  </section>
-
-  <!-- Products -->
-  <section id="products">
-    <h2>Our Featured Product</h2>
-    <div class="products">
-      <div class="product-card" style="text-align:center;">
-        <!-- Main Image -->
-        <img id="mainProductImage" 
-             src="TanPowder1.jpg" 
-             alt="Tantrum All Powder"
-             style="border-radius:12px; width:250px; height:auto; margin-bottom:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-
-        <!-- Thumbnails -->
-        <div style="margin-bottom:15px;">
-          <img src="TanPowder1.jpg" alt="Tantrum Powder Front" 
-               style="width:60px; height:auto; margin:5px; cursor:pointer; border-radius:8px; border:2px solid #ddd;"
-               onclick="document.getElementById('mainProductImage').src=this.src;">
-          <img src="powder-1.jpg" alt="Tantrum Powder Side" 
-               style="width:60px; height:auto; margin:5px; cursor:pointer; border-radius:8px; border:2px solid #ddd;"
-               onclick="document.getElementById('mainProductImage').src=this.src;">
-        </div>
-
-        <!-- Product Info -->
-        <h3>Tan Removal Powder</h3>
-        <p>A premium quality beauty powder designed to give your skin a flawless touch all day long.</p>
-        <button onclick="window.location.href='checkout.html'">Buy Now</button>
-    
-    </div>
-    </div>
-  </section>
-
-    <!-- Dynamic Services -->
-  <section id="services">
-    <h2>Our Services</h2>
-
-    <!-- Categories -->
-    <div class="services-categories">
-      <button class="active" onclick="showCategory('prewedding')">Pre-Wedding</button>
-      <button onclick="showCategory('skin')">Skin</button>
-      <button onclick="showCategory('hair')">Hair</button>
-    </div>
-
-    <!-- Services List -->
-    <div class="services" id="services-list">
-      <!-- Pre-Wedding Services -->
-      <div class="service-box category-prewedding">
-        <h3>Bridal Makeup</h3>
-        <p>Elegant, long-lasting bridal looks tailored to match your outfit, personality, and the theme of your big day.</p>
-        <p><strong>Includes:</strong> HD/airbrush makeup, false lashes, hairstyling, and touch-up kit.</p>
-      </div>
-      <div class="service-box category-prewedding">
-        <h3>Engagement Styling</h3>
-        <p>Look stunning with modern yet elegant makeup and hair styling for your engagement ceremony.</p>
-        <p><strong>Package:</strong> Outfit draping, hairstyle of choice, and premium skin prep.</p>
-      </div>
-      <div class="service-box category-prewedding">
-        <h3>Mehendi & Sangeet Glam</h3>
-        <p>Fresh, colorful looks for your pre-wedding celebrations with vibrant and playful styling.</p>
-      </div>
-
-      <!-- Skin Services -->
-      <div class="service-box category-skin" style="display:none;">
-        <h3>Facials</h3>
-        <p>Relaxing treatments to rejuvenate your skin and restore natural glow.</p>
-        <p><strong>Options:</strong> Gold, diamond, and fruit facials based on your skin type.</p>
-      </div>
-      <div class="service-box category-skin" style="display:none;">
-        <h3>Skin Therapy</h3>
-        <p>Advanced therapies for acne, pigmentation, and dullness with dermatologist-approved products.</p>
-      </div>
-      <div class="service-box category-skin" style="display:none;">
-        <h3>Bridal Skin Packages</h3>
-        <p>Multi-session treatments before your wedding to ensure clear, radiant skin.</p>
-      </div>
-
-      <!-- Hair Services -->
-      <div class="service-box category-hair" style="display:none;">
-        <h3>Hair Styling</h3>
-        <p>Trendy hairstyles for parties, weddings, or casual outings — from sleek buns to beachy waves.</p>
-      </div>
-      <div class="service-box category-hair" style="display:none;">
-        <h3>Hair Spa</h3>
-        <p>Deep nourishment and scalp treatments for shiny, frizz-free, and healthy hair.</p>
-      </div>
-      <div class="service-box category-hair" style="display:none;">
-        <h3>Color & Highlights</h3>
-        <p>Professional coloring services with high-quality, ammonia-free products for long-lasting results.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- About -->
-  <section id="about">
-    <h2>About Us</h2>
-    <div class="about">
-      <p>At Sun Beauty Care, we believe beauty and productivity go hand-in-hand. 
-         With our carefully selected products and services, we aim to create an environment 
-         where you look and feel your best, whether at work or at home.</p>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    
-    <div class="contact-container">
-    
-      <!-- Left: Address -->
-      <div class="contact-address">
-        <h3>Our Address</h3>
-        <p>
-          41/60 Sengundhapuram Main Road, <br>
-          5th Cross Rd, Corner, <br>
-          Karur, Tamil Nadu, India
-        </p>
-      </div>
-
- <!-- Right: Get in Touch + Socials -->
- <div class="contact-info">
-  <h3>Get in Touch</h3>
-  <p>📞+91 98949 76135</p>
-
-  <h3>Our Socials</h3>
-  <div class="social-icons">
-    <a href="https://www.instagram.com/SUN_BRIDAL_STUDIO" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="32">
-    </a>
-    <a href="https://www.facebook.com/sivaravi.sivaravi.520/" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="32">
-    </a>
-   
-    </a>
   </div>
-</div>
-
-</div>
-
-    <style>
-   .contact-container {
-  display: flex;
-  justify-content: center; /* keep items closer */
-  flex-wrap: wrap;
-  gap: 10px; /* reduce spacing */
-}
-
-.contact-address, .contact-info {
-  flex: 0 0 auto;   /* prevent stretching */
-  max-width: 350px; /* control width */
-  text-align: center;
-}
-
-  </style>
-
-  </section>
-
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Sun Beauty Care. All Rights Reserved.</p>
-  </footer>
-
- 
-
-  <!-- WhatsApp Chat Button -->
-  <a href="https://wa.me/919894976135" target="_blank" id="whatsapp-chat">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat">
-  </a>
-
-  <style>
-    #whatsapp-chat {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-    #whatsapp-chat img {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
-    }
-    #whatsapp-chat img:hover {
-      transform: scale(1.1);
-    }
-  </style>
-
-  <!-- Script for Dynamic Switching -->
-  <script>
-    function showCategory(category) {
-      // hide all services
-      document.querySelectorAll('.service-box').forEach(box => box.style.display = 'none');
-      // remove active from buttons
-      document.querySelectorAll('.services-categories button').forEach(btn => btn.classList.remove('active'));
-      // show selected category
-      document.querySelectorAll('.category-' + category).forEach(box => box.style.display = 'block');
-      // highlight active button
-      event.target.classList.add('active');
-    }
-  </script>
+`).join("")
+</script>
 
 </body>
 </html>
-
-
